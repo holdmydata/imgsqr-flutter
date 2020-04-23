@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "746083450389",
+    "firebase_url": "https://img-squared.firebaseio.com",
+    "project_id": "img-squared",
+    "storage_bucket": "img-squared.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:746083450389:android:e466e95781af08befcd81c",
+        "android_client_info": {
+          "package_name": "com.meansquares.imgsq"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "746083450389-dt0m2psusisjiglpgr7jrekrmuc7g7t5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMIp1kU2G1HDVbCW4ObGd00tsXh1HfJYg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "746083450389-dt0m2psusisjiglpgr7jrekrmuc7g7t5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
