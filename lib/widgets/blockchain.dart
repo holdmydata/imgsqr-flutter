@@ -18,8 +18,10 @@ const String wsUrl = 'wss://ropsten.infura.io/ws/v3/485dc3cc3cd340e5bfca58dbf28b
 final abiFile = File(join(dirname(Platform.script.path), 'abi.json'));
 
 final EthereumAddress contractAddr =
+//THIS NEEDS TO BE VARIABLE BASED ON CURRENT USER LU IN FIREBASE
     EthereumAddress.fromHex('0x4A6DD27A6122f02fDA6E2B9b9cCb800db7120637');
 final EthereumAddress receiver =
+//THIS NEEDS TO BE VARIABLE AS WELL WITH THE USER BASED IN FIREBASE
     EthereumAddress.fromHex('');
 
 
