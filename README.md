@@ -1,17 +1,21 @@
 # imgsqr
 
-A new Flutter project.
+## What's included?
 
-## Getting Started
+### ./contracts/...
 
-This project is a starting point for a Flutter application.
+This directory holds the Solidity code for all of our blockchain contracts
 
-A few resources to get you started if this is your first Flutter project:
+### ./lightweight/...
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+This directory holds a simple lightweight app that demonstrates the functionality of the blockchain contracts. Navigate there to learn more about the lightweight site.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-"# imgsqr-flutter" 
+### *Everything else*
+
+Everything else is part of the Flutter front-end app.
+
+---
+
+## Watch a demo of lightweight and the Flutter app here:
+
+[![YouTube Link](https://img.youtube.com/vi/dKqToxk9-ng/0.jpg)](http://www.youtube.com/watch?v=dKqToxk9-ng)
