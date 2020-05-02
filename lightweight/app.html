@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript" src="https://unpkg.com/jquery@3.3.1/dist/jquery.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/web3@0.20.5/dist/web3.min.js"></script>
+
+        <script type="text/javascript" src="contract-helper.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+
+        <script type="text/javascript" src="ImageContractDefinition.js"></script>
+        <script type="text/javascript" src="LicenseContractDefinition.js"></script>
+        
+        <link rel="stylesheet" type="text/css" href="app.css"></script>
+
+
+    </head>
+    <body>
+        <h1 align="center">Image License Contract Demo</h1>
+        <h4 align="center">Built by The Mean Squares</h4>
+        <hr />
+
+        <h3>1. Load DApp</h3>
+        <p class="inset"><b>Output:</b></p>
+        <p class="output inset"><span id="loadDappMessage"></span></p>
+
+        <h3>2. Add image digital asset to blockchain</h3> 
+        <form class="inset">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" id="imgName" name="imgName"></td>
+                </tr>
+                <tr>
+                    <td>Description:</td>
+                    <td><input type="text" id="imgDescription" name="imgDescription"></td>
+                </tr>
+                <tr>
+                    <td>URL:</td>
+                    <td><input type="text" id="imgURL" name="imgURL"></td>
+                </tr>
+            </table>
+            <input type="button" id="createImageBtn" value="Add Image" onclick="createImage();">
+        </form>
+        <p class="inset"><b>Output:</b></p>
+        <p class="output inset"><span id="addImageMessage"></span></p>
+
+        <h3>3. Read image digital asset from blockchain</h3> 
+        <form class="inset">
+            <table>
+                <tr>
+                    <td>Identity Hash:</td>
+                    <td><input type="text" id="imgIdentityHash" name="imgIdentityHash"></td>
+                </tr>
+            </table>
+            <input type="button" id="readImageBtn" value="Read Image" onclick="getImage();">
+        </form>
+        <p class="inset"><b>Output:</b></p>
+        <p class="output inset"><span id="readImageMessage"></span></p>
+        <div id="readByIdImg" class="card inset">
+            <img id="imgCardImage" style="width:100%">
+            <div class="container">
+                <h4><b><span id="imgCardTitle"></span></b></h4>
+                <p><i><span id="imgCardDescription"></span></i></p>
+            </div>
+        </div>
+
+        <h3>4. Read all images from blockchain</h3> 
+        <form class="inset">
+            <input type="button" id="readAllImagesBtn" value="View all Images" onclick="getAllImages();">
+        </form>
+        <p class="inset"><b>Output:</b></p>
+        <p class="output inset"><span id="readAllImagesMessage"></span></p>
+        <p class="inset"></p>
+        <p class="inset"></p>
+        <p class="inset"><i>Click image card to see next image</i></p>
+        <div id="readImgAtLocation" class="card inset" onclick="transitionNextImageCard();">
+            <img id="imgPosCardImage" style="width:100%">
+            <div class="container">
+                <h4><b><span id="imgPosCardTitle"></span></b></h4>
+                <p><i><span id="imgPosCardDescription"></span></i></p>
+            </div>
+        </div>
+        <p class="inset"><b>ID: </b><span id="imgPosCardId"></span></p>
+
+        <h3>5. Create image license on the blockchain</h3> 
+        <form class="inset">
+            <table>
+                <tr>
+                    <td>Licensor:</td>
+                    <td><input type="text" id="conLicensor" name="conLicensor"></td>
+                </tr>
+                <tr>
+                    <td>Licensee:</td>
+                    <td><input type="text" id="conLicensee" name="conLicensee"></td>
+                </tr>
+                <tr>
+                    <td>Image ID:</td>
+                    <td><input type="text" id="conImgId" name="conImgId"></td>
+                </tr>
+                <tr>
+                    <td>Fee (in Ether):</td>
+                    <td><input type="text" id="conFee" name="conFee"></td>
+                </tr>
+            </table>
+            <input type="button" id="createContractBtn" value="Create Contract" onclick="createLicenseContract();">
+        </form>
+        <p class="inset"><b>Output:</b></p>
+        <p class="output inset"><span id="createContractMessage"></span></p>
+
+
+        <h3>6. Read image license from the blockchain</h3>
+        <form class="inset">
+            <table>
+                <tr>
+                    <td>License Contract ID:</td>
+                    <td><input type="text" id="readContractId" name="readContractId"></td>
+                </tr>
+            </table>
+            <input type="button" id="readContractBtn" value="Get Contract Status" onclick="readLicenseContract();">
+        </form>
+        <p></p>
+        <table class="inset">
+            <tr>
+                <td><span id="licensorApprovedIndicator" class="statusIndicator">licensorApproved</span></td>
+                <td><span id="licenseeApprovedIndicator" class="statusIndicator">licenseeApproved</span></td>
+                <td><span id="executedIndicator" class="statusIndicator">executed</span></td>
+                <td><span id="canceledIndicator" class="statusIndicator">canceled</span></td>
+            </tr>
+        </table>
+        <p></p>
+        <p class="inset"><b>Output:</b></p>
+        <p class="output inset"><span id="readContractMessage"></span></p>
+        
+
+        <h3>7. Approve Contract</h3>
+        <p class="inset">1.  <b>Using the Ethereum wallet of the <u>LICENSOR</u></b>, 
+            press the "Approve Contract" button below to approve the contract. Use 
+            the "Get Contract Status" button in Step 6 to check the contract 
+            status again.</p>
+        <p class="inset">...then...</p>
+        <p class="inset">2.  <b>Using the Ethereum wallet of the <u>LICENSEE</u></b>, 
+            press the "Approve Contract" button below to approve the contract. Use 
+            the "Get Contract Status" button in Step 6 to check the contract 
+            status again.</p>
+            <p></p>
+        <form class="inset">
+            <table>
+                <tr>
+                    <td>License Contract ID:</td>
+                    <td><input type="text" id="approveContractId" name="approveContractId"></td>
+                </tr>
+                <tr>
+                    <td>Payment (Ether):</td>
+                    <td><input type="text" id="contractPayment" name="contractPayment"></td>
+                </tr>
+            </table>
+            <input type="button" id="approveContractBtn" value="Approve Contract" onclick="approveContract();">
+        </form>
+        <p class="inset"><b>Output:</b></p>
+        <p class="output inset"><span id="approveContractMessage"></span></p>
+        
+    </body>
+</html>

@@ -7,13 +7,16 @@ contract DigitalAsset {
         string externalPointer;
         string name;
         string description;
-        string identityHash;
+        bytes32 id;
+        bool exists;
     }
 
-    // DigitalAssetStruct[] public assets;
-    mapping(string => DigitalAssetStruct ) assets;
+    bytes32[] public getIdByPosition;
+    mapping(bytes32 => DigitalAssetStruct ) public getById;
+
+    event Created(address indexed owner, bytes32 id);
     
-    function create(string memory _externalPointer, string memory _name, string memory _description) 
+    function createAsset(string memory _name, string memory _description, string memory _externalPointer)
         public
     {
         DigitalAssetStruct memory asset;
@@ -21,29 +24,20 @@ contract DigitalAsset {
         asset.externalPointer = _externalPointer;
         asset.name = _name;
         asset.description = _description;
-        asset.identityHash = generateIdentityHash(asset);
-        assets[asset.identityHash] = asset;
+        asset.id = generateIdentityHash(asset);
+        asset.exists = true;
+        require(!getById[asset.id].exists, "Asset with this Idendity Hash (id) already exists.");
+        getById[asset.id] = asset;
+        getIdByPosition.push(asset.id);
+        emit Created(msg.sender, asset.id);
+        
     }
 
-    function generateIdentityHash(DigitalAssetStruct memory) internal pure returns (string memory);
-
-    function getDigitalAsset(string memory _identityHash) view public returns(address, string memory, string memory, string memory, string memory) {
-        return (assets[_identityHash].owner,
-                assets[_identityHash].externalPointer,
-                assets[_identityHash].name,
-                assets[_identityHash].description,
-                assets[_identityHash].identityHash);
+    function getCount() public view returns (uint) {
+        return getIdByPosition.length;
     }
 
-    // modifier isUnique(string memory _identityHash) {
-    //     bool result = true;
-    //     for (uint256 i = 0; i < assets.length; i++) {
-    //         if ( keccak256(bytes(assets[i].identityHash)) == keccak256(bytes(_identityHash)) ) {
-    //             result = false;
-    //         }
-    //     }
-    //     require(result, "Digital Asset with this Identity Hash already exists.");
-    //     _;
-    // }
+    function generateIdentityHash(DigitalAssetStruct memory) internal returns (bytes32);
+
 }
 

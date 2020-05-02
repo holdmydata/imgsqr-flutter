@@ -1,0 +1,130 @@
+/*
+#011936 - dark blue
+#738290 - grey
+#A1B5D8 - midblue
+#FFFCF7 - white
+#EFF7FF - lightblue
+*/
+
+body {
+    background-color: #EFF7FF;
+    color: #0a0a0a;
+    padding: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h3 {
+    margin-top: 40px;
+}
+
+input[type=text] {
+  width: 600px;
+}
+
+.inset {
+    margin-left: 50px;
+}
+
+.output {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2) inset;
+    padding: 10px;
+    background-color: white;
+    color: black;
+    font-family: Courier, monospace;
+    display: block;
+    overflow: auto;
+}
+
+.good {
+    color: green;
+    font-weight: bolder;
+}
+
+.bad {
+    color: crimson;
+    font-weight: bold;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  margin: 50px;
+  width: 75%;
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+  border: solid #EFF7FF 1px;
+}
+
+input[type=button] {
+  background-color: #011936;
+  border: solid #A1B5D8 1px; 
+  border-radius: 10px;
+  color: #EFF7FF;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 20px 4px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.statusIndicator {
+    border: solid black 1px;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px;
+}
+
+.statusTrue {
+    background-color: #56EF84;
+}
+
+.statusFalse {
+    background-color: #FF5B69;
+}
+
+.button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+img {
+    border: solid #EFF7FF 1px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 16px 16px;
+  text-align: center;
+}
+
+.loading:after {
+    content: ' .';
+    animation: dots 1s steps(5, end) infinite;}
+  
+  @keyframes dots {
+    0%, 20% {
+      color: black;
+      text-shadow:
+        .25em 0 0 white,
+        .5em 0 0 white;}
+    40% {
+      color: black;
+      text-shadow:
+        .25em 0 0 white,
+        .5em 0 0 white;}
+    60% {
+      text-shadow:
+        .25em 0 0 black,
+        .5em 0 0 white;}
+    80%, 100% {
+      text-shadow:
+        .25em 0 0 black,
+        .5em 0 0 black;}
+}
